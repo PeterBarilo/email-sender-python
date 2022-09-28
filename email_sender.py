@@ -5,8 +5,8 @@ from pathlib import Path
 
 html = Template(Path('index.html').read_text())
 email = EmailMessage()
-email['from'] = 'Peter Barilo'
-email['to'] = 'barilopeter@gmail.com'
+email['from'] = 'NAME'
+email['to'] = 'EMAIL'
 email['subject'] = 'Test Email'
 
 email.set_content(html.substitute({'name': 'Joe'}), 'html')
@@ -14,7 +14,7 @@ email.set_content(html.substitute({'name': 'Joe'}), 'html')
 with smtplib.SMTP(host='smtp.gmail.com', port=587) as smtp:
     smtp.ehlo()
     smtp.starttls()
-    smtp.login('peterbarilo@gmail.com', 'dimhzgtaqqpaoiat')
+    smtp.login('EMAIL', 'PASS')
     smtp.send_message(email)
     print('Sent')
 
